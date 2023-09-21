@@ -6,7 +6,7 @@ import { request } from '../request/axios.request';
 // The function accepts a 'params' object to conditionally include parameters in the request
 export async function contactsJsonApi(params) {
   // Destructure parameters from the 'params' object
-  const { companyId, query, page, countryId } = params;
+  const { companyId, query, page, countryId, noGroupDuplicates } = params;
   
   // Initialize an empty object to store query parameters
   let queryParams = {};
@@ -29,6 +29,11 @@ export async function contactsJsonApi(params) {
   // Check if 'countryId' is provided and add it to the 'queryParams' object if true
   if (countryId) {
     queryParams.countryId = countryId;
+  }
+
+  // Check if 'noGroupDuplicates' is provided and add it to the 'queryParams' object if true
+  if(noGroupDuplicates){
+    queryParams.noGroupDuplicates = noGroupDuplicates;
   }
   // Make a GET request to the CONTACTS URL with the constructed query parameters
   return request({ url: CONTACTS, method: 'get', params: queryParams });

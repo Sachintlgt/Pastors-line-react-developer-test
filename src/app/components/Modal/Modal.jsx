@@ -58,7 +58,6 @@ const Modal = ({
                                                     <Scrollbars style={{ height: 400 }} onScroll={(e) => handleScroll(e)}>
                                                         {
                                                             data.map((contactId, index) => {
-                                                                console.log(getCountryName(contactsListData.contacts[contactId].country_id), contactsListData.contacts[contactId].country_id)
                                                                 return (
                                                                     <table className="w-100 cursor-pointer" key={index} onClick={() => handleViewModal(contactId)}>
                                                                         <tbody>

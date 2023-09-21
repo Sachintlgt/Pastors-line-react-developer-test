@@ -32,6 +32,7 @@ const USContacts = () => {
             dispatch(contactsList({
                 companyId: process.env.REACT_APP_COMPANY_ID,
                 page: 1,
+                noGroupDuplicates: 1,
                 countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
             }));
         }
@@ -62,6 +63,7 @@ const USContacts = () => {
                     companyId: process.env.REACT_APP_COMPANY_ID,
                     page: 1,
                     query,
+                    noGroupDuplicates: 1,
                     countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
                 }));
             }, 1000)
@@ -82,6 +84,7 @@ const USContacts = () => {
                     companyId: process.env.REACT_APP_COMPANY_ID,
                     page: currentPage + 1,
                     query: search || '',
+                    noGroupDuplicates: 1,
                     countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
                 })
             );

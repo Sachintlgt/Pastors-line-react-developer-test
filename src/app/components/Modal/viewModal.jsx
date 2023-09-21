@@ -5,8 +5,8 @@ const ViewModal = ({ show, data, handleClose }) => {
     return (
         <React.Fragment>
             {/* Modal dialog */}
-            <div className={`modal fade ${show ? "show" : ""}`} tabIndex="0" role="dialog" aria-hidden="true">
-                <div className="modal-dialog modal-xl">
+            <div className={`modal fade view-modal ${show ? "show" : ""}`} tabIndex="0" role="dialog" aria-hidden="true">
+                <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Contact Info</h5>
@@ -48,7 +48,7 @@ const ViewModal = ({ show, data, handleClose }) => {
                 </div>
             </div>
             {/* Modal backdrop */}
-            <div className={`modal-backdrop ${show ? "show" : ""}`} onClick={handleClose}></div>
+            <div className={`modal-backdrop view-modal-back ${show ? "show" : ""}`} onClick={handleClose}></div>
         </React.Fragment>
     );
 }
