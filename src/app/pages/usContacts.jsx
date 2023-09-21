@@ -31,9 +31,9 @@ const USContacts = () => {
     useEffect(() => {
         if (!contactsListData.contacts) {
             dispatch(contactsList({
-                companyId: '171',
+                companyId: process.env.REACT_APP_COMPANY_ID,
                 page: 1,
-                countryId: 226 // US Id
+                countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
             }));
         }
     }, [contactsListData.contacts, dispatch]);
@@ -59,10 +59,10 @@ const USContacts = () => {
         setIsTyping(() =>
             setTimeout(() => {
                 dispatch(contactsList({
-                    companyId: '171',
+                    companyId: process.env.REACT_APP_COMPANY_ID,
                     page: 1,
                     query,
-                    countryId: 226 // US Id
+                    countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
                 }));
             }, 1000)
         );
@@ -79,10 +79,10 @@ const USContacts = () => {
             // Dispatch an action to fetch more data and append it to your existing data
             dispatch(
                 contactsList({
-                    companyId: '171',
+                    companyId: process.env.REACT_APP_COMPANY_ID,
                     page: currentPage + 1,
                     query: search || '',
-                    countryId: 226 // US Id
+                    countryId: process.env.REACT_APP_US_COUNTRY_ID // US Id
                 })
             );
             // Update the currentPage state when new data is loaded.

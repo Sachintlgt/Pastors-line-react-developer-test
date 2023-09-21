@@ -66,7 +66,10 @@ To configure the project's environment, follow these steps:
 
 2. Open the `.env` file using a text editor.
 
-3. Add the following line to the `.env` file to set the API URL: `REACT_APP_API_URL="https://api.dev.pastorsline.com/api"`
+3. Add the following line to the `.env` file to set the API URL: 
+`REACT_APP_API_URL="https://api.dev.pastorsline.com/api"`
+`REACT_APP_COMPANY_ID='560'`
+`REACT_APP_US_COUNTRY_ID=226`
 
 Ensure there are no spaces or extra characters in this line.
 

@@ -31,7 +31,7 @@ const AllContacts = () => {
     useEffect(() => {
         if (!contactsListData.contacts) {
             dispatch(contactsList({
-                companyId: '171',
+                companyId: process.env.REACT_APP_COMPANY_ID,
                 page: 1,
             }));
         }
@@ -58,7 +58,7 @@ const AllContacts = () => {
         setIsTyping(() =>
             setTimeout(() => {
                 dispatch(contactsList({
-                    companyId: '171',
+                    companyId: process.env.REACT_APP_COMPANY_ID,
                     page: 1,
                     query
                 }));
@@ -77,7 +77,7 @@ const AllContacts = () => {
             // Dispatch an action to fetch more data and append it to your existing data
             dispatch(
                 contactsList({
-                    companyId: '171',
+                    companyId: process.env.REACT_APP_COMPANY_ID,
                     page: currentPage + 1,
                     query: search || ''
                 })
@@ -115,8 +115,6 @@ const AllContacts = () => {
 
     return (
         <React.Fragment>
-            {/* Wrap the Modal component in Scrollbars */}
-            
                 {/* Pass data and functions to the Modal component */}
                 <Modal
                     loading={loading}
