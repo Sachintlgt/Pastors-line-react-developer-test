@@ -1,4 +1,4 @@
-import { CONTACTS_LIST, ERROR_CONTACTS_LIST, SUCCESS_CONTACTS_LIST, VIEW_CONTACT } from "./contacts.action";
+import { CONTACTS_LIST, ERROR_CONTACTS_LIST, RESET_STATE, SUCCESS_CONTACTS_LIST, VIEW_CONTACT } from "./contacts.action";
 import { DEFAULT_STATE } from "./contacts.state";
 
 export const contactsReducer = (state = DEFAULT_STATE, action = {
@@ -52,6 +52,13 @@ export const contactsReducer = (state = DEFAULT_STATE, action = {
             }
             // Return the current state if the contact ID is not valid or not found in data
             return state;
+        case RESET_STATE:
+            return {
+                ...state,
+                loading: false,
+                contactsListData: {},
+                viewContactData: {}
+            };
         default:
             // Return the current state for unhandled actions
             return state;

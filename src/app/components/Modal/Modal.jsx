@@ -16,7 +16,8 @@ const Modal = ({
     handleViewModal,
     handleSearch,
     handleOnChange,
-    handleScroll
+    handleScroll,
+    handleReset
 }) => {
     // Get the current pathname using the react-router-dom's useLocation hook
     const { pathname } = useLocation();
@@ -28,8 +29,8 @@ const Modal = ({
                         <div className="modal-body">
                             {/* Navigation links and close button */}
                             <div className='d-flex align-items-center justify-content-center mb-3'>
-                                <Link to={pathname === ALL_CONTACTS ? "#" : ALL_CONTACTS} className="btn btn-primary-a">All Contacts</Link>
-                                <Link to={pathname === US_CONTACTS ? "#" : US_CONTACTS} className="btn btn-primary-b mx-2">US Contacts</Link>
+                                <Link to={pathname === ALL_CONTACTS ? "#" : ALL_CONTACTS} className="btn btn-primary-a" onClick={handleReset}>All Contacts</Link>
+                                <Link to={pathname === US_CONTACTS ? "#" : US_CONTACTS} className="btn btn-primary-b mx-2" onClick={handleReset}>US Contacts</Link>
                                 <button type="button" className="btn btn-outline-primary-a" onClick={handleClose}>Close</button>
                             </div>
                             {/* Search input */}
@@ -54,9 +55,10 @@ const Modal = ({
                                         {!loading ? (
                                             data && data.length > 0 ? (<tr>
                                                 <td colSpan={12} className="p-0">
-                                                    <Scrollbars style={{ height: 500 }} onScroll={(e) => handleScroll(e)}>
+                                                    <Scrollbars style={{ height: 400 }} onScroll={(e) => handleScroll(e)}>
                                                         {
                                                             data.map((contactId, index) => {
+                                                                console.log(getCountryName(contactsListData.contacts[contactId].country_id), contactsListData.contacts[contactId].country_id)
                                                                 return (
                                                                     <table className="w-100 cursor-pointer" key={index} onClick={() => handleViewModal(contactId)}>
                                                                         <tbody>
@@ -67,7 +69,7 @@ const Modal = ({
                                                                                 <td className="mw-150">{contactsListData.contacts[contactId].last_name}</td>
                                                                                 <td className="mw-200">{contactsListData.contacts[contactId].email}</td>
                                                                                 <td className="mw-150">{contactsListData.contacts[contactId].phone}</td>
-                                                                                <td className="mw-150">{getCountryName(contactsListData.contacts[contactId].country_id)}</td>
+                                                                                <td className="mw-150">{getCountryName(contactId, contactsListData.contacts[contactId].country_id)}</td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>

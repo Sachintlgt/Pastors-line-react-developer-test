@@ -8,3 +8,7 @@ export const contactsListResponse = (type, data) => ({ type, data });
 // Action for viewing a specific contact
 export const VIEW_CONTACT = 'VIEW_CONTACT';
 export const viewContact = (data) => ({ type: VIEW_CONTACT, data });
+
+// Action for reset state
+export const RESET_STATE = 'RESET_STATE';
+export const resetState = (data) => ({ type: RESET_STATE, data });
