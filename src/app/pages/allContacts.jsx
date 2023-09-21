@@ -32,6 +32,7 @@ const AllContacts = () => {
             dispatch(contactsList({
                 companyId: process.env.REACT_APP_COMPANY_ID,
                 page: 1,
+                noGroupDuplicates: 1
             }));
         }
     }, [contactsListData.contacts, dispatch]);
@@ -60,7 +61,8 @@ const AllContacts = () => {
                 dispatch(contactsList({
                     companyId: process.env.REACT_APP_COMPANY_ID,
                     page: 1,
-                    query
+                    query,
+                    noGroupDuplicates: 1
                 }));
             }, 1000)
         );
@@ -79,7 +81,8 @@ const AllContacts = () => {
                 contactsList({
                     companyId: process.env.REACT_APP_COMPANY_ID,
                     page: currentPage + 1,
-                    query: search || ''
+                    query: search || '',
+                    noGroupDuplicates: 1
                 })
             );
             // Update the currentPage state when new data is loaded.

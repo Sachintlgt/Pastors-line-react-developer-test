@@ -77,3 +77,11 @@
   border-bottom: none;
   background: #eee;
 }
+
+.view-modal-back{
+  z-index: 1060;
+}
+
+.view-modal{
+  z-index: 1061;
+}
