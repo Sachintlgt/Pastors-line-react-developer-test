@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Modal from "../components/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import { contactsList, viewContact } from "../duck/contacts/contacts.action";
+import { contactsList, resetState, viewContact } from "../duck/contacts/contacts.action";
 import { closeModal } from "../duck/modal/modal.action";
 import history from "../routing/history";
 import { HOME } from "../routing/constants";
-import { Scrollbars } from 'react-custom-scrollbars';
 import ViewModal from "../components/Modal/viewModal";
 
 const USContacts = () => {
@@ -25,7 +24,7 @@ const USContacts = () => {
         if (!show) {
             history.push(HOME);
         }
-    }, [show, history]);
+    }, [show]);
 
     // Fetch US contacts data only if it hasn't been fetched already
     useEffect(() => {
@@ -41,6 +40,7 @@ const USContacts = () => {
     // Close the modal and navigate to HOME route
     const handleClose = () => {
         dispatch(closeModal());
+        dispatch(resetState());
         history.push(HOME);
     };
 
@@ -102,14 +102,17 @@ const USContacts = () => {
         setViewModal(!viewModal);
     }
 
+    const handleReset = () => {
+        dispatch(resetState());
+    }
+
     // Function to get the country name from the data based on country_id
-    const getCountryName = (countryId) => {
-        if (contactsListData.contacts[countryId]) {
-            return contactsListData.contacts[countryId].country.iso;
+    const getCountryName = (contactId, countryId) => {
+        if (contactsListData.contacts[contactId] && contactsListData.contacts[contactId].country && contactsListData.contacts[contactId].country.id === countryId) {
+            return contactsListData.contacts[contactId].country.iso;
         }
         return ""; // Return an empty string if the country ID is not found
     };
-
     // Filter the contacts based on the checkbox state
     const filteredContacts = showEvenIds
         ? contactsListData.contacts_ids.filter((id) => id % 2 === 0)
@@ -133,6 +136,7 @@ const USContacts = () => {
                     handleViewModal={handleViewModal}
                     handleOnChange={handleOnlyEvenCheckbox}
                     handleScroll={handleScroll}
+                    handleReset={handleReset}
                 />
             {viewModal ? <ViewModal show={viewModal} data={viewContactData || {}} handleClose={handleCloseViewModal}/> : ""}
         </React.Fragment>
